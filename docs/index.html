@@ -1,23 +1,51 @@
 <html>
 <head>
+    <meta name="robots" content="noindex">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <style type="text/css">
     </style>
+
+    <script type="text/javascript">
+        const base_acceleration = -0.2;
+        let t = 0.0;
+        let a = base_acceleration;
+        let v = 8.0;
+        let d = 0.0;
+        let bouncer = null;
+        
+        setInterval(() => {
+            if (bouncer === null) {
+                bouncer = document.getElementById("bouncer");
+            } 
+
+            t++; //time marches on
+            d = (v * t) + (0.5 * a * (t**2)); //the old d = vt + 1/2at^2
+
+            if (d < 0) {
+                t =0; //or does it?
+                a = base_acceleration + (base_acceleration * Math.random());
+            }
+            bouncer.style.width = d;
+            //console.log(`time: ${t}, d: ${d}`);
+        }, 25);
+    
+    </script>
 </head>
 <body class="section">
     <div class="container content is-max-desktop is-medium">
         <p>
+            <span id="bouncer" style="width: 0; display: inline-block;"></span>
             Hi Raquel,
         </p>
         <p>
             I thought maybe it would be good to give a brief introduction to myself. I really enjoy working in software. I've been doing it since 2000 when I switched from working in manufacturing. I had gone to school at the University of Connecticut for Management and Engineering for Manufacturing which was a sampling of differnt engineering disciplines and business management for the purpose of working in factories and improving the processes, including designing products that would be easier to manufacture. What I really wanted was to understand how things worked on a deeper level, but didn't necessarily want to go into manufacturing, it mostly seemed like a degree that would teach me a bit about how everything works. I think that part worked out pretty well.
         </p>
         <p>
-            After school, I did take a job in manufacturing in Connecticut where I grew up. I was put in charge of modernizing a warehouse at a company that manufactured small metal components. Most of the problems I ran into were actually computer related and I ended up being curious about making the fixes on my own. This got me interested in programming and I was lucky that my girlfriend at the time already had a solid start in programming and was able to help me get started.
+            After school, I did take a job in manufacturing in Connecticut where I grew up. I was put in charge of modernizing a warehouse at a company that manufactured small metal components. Most of the problems I ran into were actually computer related and I ended up being curious about making the fixes on my own. This got me interested in programming and I started teaching myself with the help of some friends. 
         </p>
         <p>
-            Getting started in software can be a funny struggle, all of the information in the world is out there and all you really need is a computer to get started, but at the same time when you don't know what you don't know, somtimes finding the info is difficult until you know the words to search for. 
+            The beginning was tough, but the small victories were fun. When I didn't even know what words to search for it was really frustrating and even the smallest clue from an experienced person helped a lot. Getting started in software can be a funny struggle, all of the information in the world is out there and all you really need is a computer to get started, but at the same time when you don't know what you don't know, sometimes finding the info is difficult until you know the words to search for. 
         </p>
         <p>
             After moving to Oregon in 2000, I intentionally sought out an entry level job in software. I found a good job doing basic web development at a company that did online college applications for colleges. My coworkers there were really in to various different aspects of computers and were really generous with the their help. I learned a lot about the importnat basics like using the command line, getting around in a file system, basic networking, front end web development, back end web developement and some desktop application porgramming. Those beautiful people really helped me along and some of them are still good friends 20 years later.
@@ -26,12 +54,24 @@
             I've wanted to pay that help forward in various ways. I have helped several friends advance in their carreers and become software developers. I'd really like to help more people in this way. I don't have any specific training in education, but I do want learn how to teach this stuff. I think software and engineering are great careers that can be very satisfying and pay very well. I also think that software is a very egalitarian career where there are lots of opportunities to advance based on the effort that somebody wants to put into it.
         </p>
         <p>
-            There is a lot to think about with software, but I do think there are small ways to get started and grow naturally from there.  What do you want to do? 
+            There is a lot to think about with software, but I do think there are small ways to get started and grow naturally from there. Do you want to tell me a bit about what you want to do and where I might be able to help?
         </p>
         <p>
             -Jon 8/8/21
         </p>
-
+        <p>
+            <a href="https://www.linkedin.com/in/jonathangarrison/">Linked In Profile</a>
+        </p>
+        <p>
+            <a href="https://photos.app.goo.gl/wLZFEx53fKENf6um7">Various 3D CAD and 3D Printing Projects</a>
+        </p>
+        <p>
+            <a href="https://www.flickr.com/photos/earthwandering/albums">Various Adventures</a> 
+            (With at least 
+            <a href="https://www.flickr.com/photos/earthwandering/albums/72157677842757798">one</a>
+             or <a href="https://www.flickr.com/photos/earthwandering/29568424866/in/album-72157673815062796/">two</a>
+              with your grandmother)
+        </p>
     </section>
 
 </body>
