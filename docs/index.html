@@ -7,36 +7,51 @@
     </style>
 
     <script type="text/javascript">
-        const base_acceleration = -0.2;
-        let t = 0.0;
-        let a = base_acceleration;
-        let v = 8.0;
-        let d = 0.0;
-        let bouncer = null;
-        
-        setInterval(() => {
-            if (bouncer === null) {
-                bouncer = document.getElementById("bouncer");
-            } 
 
-            t++; //time marches on
-            d = (v * t) + (0.5 * a * (t**2)); //the old d = vt + 1/2at^2
+        const start_bounce = () => {
+            const full_height = 80;
+            let base_acceleration = -0.2;
+            let t = 0.0;
+            let a = base_acceleration;
+            let v = 4.0;
+            let d = 0.0;
+            let bouncerTop = null;
+            let bouncerBottom = null;
 
-            if (d < 0) {
-                t =0; //or does it?
-                a = base_acceleration + (base_acceleration * Math.random());
-            }
-            bouncer.style.width = d;
-            //console.log(`time: ${t}, d: ${d}`);
-        }, 25);
+            const intervalId = setInterval(() => {
+                if (bouncerTop === null) {
+                    bouncerTop = document.getElementById("bouncer-top");
+                }
+                if (bouncerBottom === null) {
+                    bouncerBottom = document.getElementById("bouncer-bottom");
+                } 
+
+                t++; //time marches on
+                d = (v * t) + (0.5 * a * (t**2)); //the old d = vt + 1/2at^2
+
+                if (d < 0) {
+                    t =0; //or does it?
+                    a = base_acceleration + (base_acceleration * Math.random());
+                    v -= 0.25;
+                    if (v < 0) clearInterval(intervalId);
+                }
+
+                bouncerTop.style.height = full_height - d;
+                bouncerBottom.style.height = d;
+                console.log(`time=${t}, d=${d} bA=${base_acceleration}`);
+            }, 25);
+        } //end start_bounce
+
+        setTimeout(start_bounce, 1500);
     
     </script>
 </head>
 <body class="section">
     <div class="container content is-max-desktop is-medium">
-        <p>
-            <span id="bouncer" style="width: 0; display: inline-block;"></span>
+        <p style="height: 100px;">
+            <span id="bouncer-top" style="height: 80; display: block;"></span>
             Hi Raquel,
+            <span id="bouncer-bottom" style="height: 0; display: block;"></span>
         </p>
         <p>
             I thought maybe it would be good to give a brief introduction to myself. I really enjoy working in software. I've been doing it since 2000 when I switched from working in manufacturing. I had gone to school at the University of Connecticut for Management and Engineering for Manufacturing which was a sampling of differnt engineering disciplines and business management for the purpose of working in factories and improving the processes, including designing products that would be easier to manufacture. What I really wanted was to understand how things worked on a deeper level, but didn't necessarily want to go into manufacturing, it mostly seemed like a degree that would teach me a bit about how everything works. I think that part worked out pretty well.
@@ -55,6 +70,9 @@
         </p>
         <p>
             There is a lot to think about with software, but I do think there are small ways to get started and grow naturally from there. Do you want to tell me a bit about what you want to do and where I might be able to help?
+        </p>
+        <p>
+            I'm sorry it's been such a rough summer for you. I totally understand if you aren't thinking much about robotics or software this summer. I will also of course totally understand if you don't feel like the help of a distant cousin. Either way, I wish you the best!
         </p>
         <p>
             -Jon 8/8/21
